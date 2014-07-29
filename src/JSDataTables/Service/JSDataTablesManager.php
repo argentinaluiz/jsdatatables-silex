@@ -3,8 +3,9 @@
 namespace JSDataTables\Service;
 
 use Silex\Application;
+use Symfony\Component\HttpFoundation\Request;
 
-class JSDataTablesManager implements ServiceProviderInterface {
+class JSDataTablesManager {
 
     private $app;
 
@@ -17,8 +18,8 @@ class JSDataTablesManager implements ServiceProviderInterface {
         return $this;
     }
 
-    public function getDt($name) {
-        $dataTablesConfig = $this->app('js_datatables');
+    public function getDt($name, Request $request) {
+        $dataTablesConfig = $this->app('js_datatables.config');
         if (array_key_exists($name, $dataTablesConfig))
         {
             $dtConfig = $this->getDtConfig($name);
@@ -30,10 +31,10 @@ class JSDataTablesManager implements ServiceProviderInterface {
                 if (isset($dtConfig['class_dt']))
                 {
                     $instance = new $dtConfig['class_dt'];
-                    return $this->injectDependencies($instance, $this->getDtConfig($name));
+                    return $this->injectDependencies($instance, $this->getDtConfig($name), $request);
                 } else
                 {
-                    return $this->injectDependencies(new JSDataTables(), $this->getDtConfig($name));
+                    return $this->injectDependencies(new JSDataTables(), $this->getDtConfig($name), $request);
                 }
             }
         } else
@@ -42,15 +43,16 @@ class JSDataTablesManager implements ServiceProviderInterface {
         }
     }
 
-    public function injectDependencies(JSDataTables $dataTable, $dtConfig) {
+    public function injectDependencies(JSDataTables $dataTable, $dtConfig, Request $request) {
         return $dataTable->setDtArrayConfig($dtConfig)
                         ->setEntityManager($this->app('orm.em'))
                         ->setListClause($this->app('js.datatables.list_clause'))
-                        ->setParams($this->app('request')->query->all());
+                        ->setParams($request->query->all())
+                        ->setValidator($this->app('validator'));
     }
 
     public function getDtConfig($name) {
-        return $this->app(['js_datatables'])[$name]['dt_config'];
+        return $this->app('js_datatables.config')[$name]['dt_config'];
     }
 
 }

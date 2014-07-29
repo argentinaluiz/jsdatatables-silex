@@ -16,7 +16,7 @@ class JSDataTablesProvider implements ServiceProviderInterface {
         {
             $object = new JSDataTablesManager();
             $object->setApp($app);
-            return $app;
+            return $object;
         });
 
         $app['js.datatables.field_filter'] = $app->share(function()
@@ -26,7 +26,7 @@ class JSDataTablesProvider implements ServiceProviderInterface {
 
         $app['js.datatables.list_clause'] = $app->share(function() use ($app)
         {
-            return new ListClause($app['js.datatables.list_clause']);
+            return new ListClause($app['js.datatables.field_filter']);
         });
     }
 

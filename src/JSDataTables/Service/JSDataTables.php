@@ -212,6 +212,7 @@ class JSDataTables {
 
     public function setValidator($validator) {
         $this->validator = $validator;
+        return $this;
     }
 
     public function getValidator() {

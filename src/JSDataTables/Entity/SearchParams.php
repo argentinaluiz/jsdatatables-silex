@@ -59,7 +59,7 @@ class SearchParams {
     }
 
     static public function loadValidatorMetadata(ClassMetadata $metadata) {
-        $metadata->addPropertyConstraint('value', new Assert\NotBlank());
+        $metadata->addPropertyConstraint('value', new Assert\NotNull());
         $metadata->addPropertyConstraint('regex', new Assert\NotNull());
     }
 

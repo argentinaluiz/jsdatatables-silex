@@ -22,7 +22,8 @@
         "silex/silex": "1.*",
         "symfony/validator": "~2.3",
         "zendframework/zend-inputfilter": "dev-master",
-        "zendframework/zend-i18n": "dev-master"
+        "zendframework/zend-i18n": "dev-master",
+        "zendframework/zend-servicemanager": "dev-master"
     },
     "autoload": {
         "psr-0": {

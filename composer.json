@@ -1,0 +1,32 @@
+{
+    "name": "argentinaluiz/jsdatatables-silex",
+    "description": "Library based in silex to manager requests datatables",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "framework",
+        "silex",
+        "datatables",
+        "doctrine"
+    ],
+    "homepage": "https://github.com/argentinaluiz/jsdatatables-silex.git",
+    "authors": [
+        {
+            "name": "Luiz Carlos",
+            "email": "argentinaluiz@gmail.com",
+            "homepage": "https://github.com/argentinaluiz"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4",
+        "silex/silex": "1.*",
+        "symfony/validator": "~2.3",
+        "zendframework/zend-inputfilter": "dev-master",
+        "zendframework/zend-i18n": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "JSDataTables": "src/"
+        }
+    }
+}

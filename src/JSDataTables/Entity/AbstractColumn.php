@@ -103,10 +103,10 @@ abstract class AbstractColumn {
     }
 
     static public function loadValidatorMetadata(ClassMetadata $metadata) {
-        $metadata->addPropertyConstraint('data', new Assert\NotBlank());
+        $metadata->addPropertyConstraint('data', new Assert\NotNull());
         $metadata->addPropertyConstraint('name', new Assert\NotNull());
-        $metadata->addPropertyConstraint('orderable', new Assert\NotBlank());
-        $metadata->addPropertyConstraint('searchable', new Assert\NotBlank());
+        $metadata->addPropertyConstraint('orderable', new Assert\NotNull());
+        $metadata->addPropertyConstraint('searchable', new Assert\NotNull());
     }
 
 }

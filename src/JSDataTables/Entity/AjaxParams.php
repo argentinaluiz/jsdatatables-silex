@@ -179,7 +179,6 @@ class AjaxParams {
         $metadata->addPropertyConstraint('columns', new Assert\Count(['min' => 1]));
         $metadata->addPropertyConstraint('columns', new Assert\Valid());
 
-        $metadata->addPropertyConstraint('order', new Assert\Count(['min' => 1]));
         $metadata->addPropertyConstraint('order', new Assert\Valid());
     }
 
